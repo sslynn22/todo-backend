@@ -5,7 +5,8 @@ import java.util.Map;
 import java.util.Optional;
 import org.springframework.stereotype.Repository;
 
-@Repository
+
+// TODO [1단계] MemberRepository는 저장소입니다. 어떤 컴포넌트로 해야할까요?
 public class MemberRepository {
 
     private final Map<Long, Member> members = new HashMap<>();
