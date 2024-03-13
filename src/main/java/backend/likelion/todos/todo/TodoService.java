@@ -41,9 +41,6 @@ public class TodoService {
 
     // 주어진 Todo의 내용과 날짜를 업데이트합니다.
     public void update(Long todoId, Long memberId, String content, LocalDate date) {
-        // TODO [3단계] memberId로 회원 정보를 조회하고, 없으면 "회원 정보가 없습니다." 메시지와 함께 NotFoundException을 발생시키세요.
-        // TODO [3단계] todoId로 투두 정보를 조회하고, 없으면 "투두 정보가 없습니다." 메시지와 함께 NotFoundException을 발생시키세요.
-        // TODO [3단계] 조회한 투두의 멤버가 입력된 멤버와 동일한지 확인하고, 내용 및 날짜를 업데이트하세요.
         Member member = memberRepository.findById(memberId)
             .orElseThrow(() -> new NotFoundException("회원 정보가 없습니다."));
         Todo todo = todoRepository
@@ -92,8 +89,6 @@ public class TodoService {
 
     // 특정 회원 ID와 날짜에 해당하는 모든 Todo를 찾아 TodoWithDayResponse 리스트로 반환합니다.
     public List<TodoWithDayResponse> findAllByMemberIdAndDate(Long memberId, YearMonth date) {
-        // TODO [3단계] memberId와 date를 사용하여 해당하는 모든 Todo를 조회하세요.
-        // TODO [3단계] 조회된 Todo를 날짜별로 그룹화하고, 각 그룹을 TodoWithDayResponse 객체로 변환하여 리스트로 반환하세요.
         List<Todo> todos = todoRepository.findAllByMemberIdAndDate(memberId, date);
         Map<Integer, List<Todo>> todoWithDaysMap = todos.stream()
             .collect(Collectors.groupingBy(it -> it.getDate().getDayOfMonth()));
