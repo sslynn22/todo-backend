@@ -29,8 +29,8 @@ public class AuthArgumentResolver implements HandlerMethodArgumentResolver {
             NativeWebRequest webRequest,
             WebDataBinderFactory binderFactory
     ) {
-        // TODO [6단계] webRequest로부터 accessToken을 추출하고, jwtService를 사용하여 memberId를 추출하여 반환하는 로직을 구현하세요.
-        return null;
+        String accessToken = extractAccessToken(webRequest);
+        return jwtService.extractMemberId(accessToken);
     }
 
     private static String extractAccessToken(NativeWebRequest request) {
