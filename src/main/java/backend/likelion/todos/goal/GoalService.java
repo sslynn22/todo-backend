@@ -33,6 +33,7 @@ public class GoalService {
         if (!goal.getMember().getId().equals(memberId)) {
             throw new IllegalArgumentException("회원 정보가 일치하지 않습니다.");
         }
+
         goal.validateMember(member);
         goal.update(name, color);
     }
